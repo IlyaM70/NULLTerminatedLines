@@ -174,14 +174,7 @@ int  to_int_number(char str[])
 {
 	if (!is_int_number(str)) return 0;
 	int number = 0; // значение числа 
-	for (int i = 0; str[i]; i++)
-	{
-		if (str[i] != ' ')
-		{
-			number *= 10; // сдвигаем число на 1 разряд влево чтобы освободить младший разряд для следующей цифры
-			number += str[i] - 48; //48-ASCII-код симбола 0
-		}
-	}
+	number = atoi(str);
 	return number;
 }
 
@@ -238,7 +231,7 @@ int  bin_to_dec(char str[])
 	int n = strlen(str);
 	for (int i = n - 1; i >= 0; i--)
 	{
-		if (str[i] != ' ')
+		if (!isspace(str[i]))
 		{
 			decimal += (str[i] - 48) * weight;
 			weight *= 2;
@@ -267,7 +260,7 @@ int  hex_to_dec(char str[])
 	int n = strlen(str);
 	for (int i = n - 1; i >= 0; i--)
 	{
-		if (str[i] != ' ')
+		if (!isspace(str[i]))
 		{
 			if (isdigit(str[i])) decimal += (str[i] - 48) * weight;
 			if (isalpha(str[i])) decimal += (str[i] - 55) * weight;
