@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 #include<Windows.h>
 #include<ctype.h>
 #include<stdlib.h>
@@ -6,7 +6,7 @@
 using namespace std;
 
 void InputLine(char str[], const int n);
-int StrLen(char str[]);//возвращает размер строки
+int StrLen(char str[]);//РІРѕР·РІСЂР°С‰Р°РµС‚ СЂР°Р·РјРµСЂ СЃС‚СЂРѕРєРё
 
 void to_upper(char str[]);
 void to_lower(char str[]);
@@ -38,7 +38,7 @@ void main()
 
 	const int n = 20;
 	char str[n] = "";
-	cout << "Введите строку ";
+	cout << "Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ ";
 		InputLine(str, n);
 	cout << str << endl;//CP866
 	
@@ -47,16 +47,16 @@ void main()
 	i=StrLen(str);
 	cout << i << endl;
 
-	cout << "Что требуется сделать? 1-перевести в верхний регистр, 2-в нижний" << endl
-		<< " 3 - сделать первую букву каждого слова в предложении заглавной " << endl
-		<< " 4 - убрать из строки лишние пробелы " << endl
-		<< " 5 - Определить, является ли строка целым числом " << endl
-		<< " 6 - Если строка является числом, то вывести значение этого числа " << endl
-	    << " 7 - Определить, является ли строка паледромом " << endl
-	    << " 8 - Перевести двоичное число в десятичное  " << endl
-	    << " 9 - Перевести шестнадчатиричное число в десятичное " << endl
-	    << " 10 - Выяснить является ли строка MAC-адрессом " << endl
-	    << " 11 - Выяснить является ли строка ip-адрессом " << endl;
+	cout << "Р§С‚Рѕ С‚СЂРµР±СѓРµС‚СЃСЏ СЃРґРµР»Р°С‚СЊ? 1-РїРµСЂРµРІРµСЃС‚Рё РІ РІРµСЂС…РЅРёР№ СЂРµРіРёСЃС‚СЂ, 2-РІ РЅРёР¶РЅРёР№" << endl
+		<< " 3 - СЃРґРµР»Р°С‚СЊ РїРµСЂРІСѓСЋ Р±СѓРєРІСѓ РєР°Р¶РґРѕРіРѕ СЃР»РѕРІР° РІ РїСЂРµРґР»РѕР¶РµРЅРёРё Р·Р°РіР»Р°РІРЅРѕР№ " << endl
+		<< " 4 - СѓР±СЂР°С‚СЊ РёР· СЃС‚СЂРѕРєРё Р»РёС€РЅРёРµ РїСЂРѕР±РµР»С‹ " << endl
+		<< " 5 - РћРїСЂРµРґРµР»РёС‚СЊ, СЏРІР»СЏРµС‚СЃСЏ Р»Рё СЃС‚СЂРѕРєР° С†РµР»С‹Рј С‡РёСЃР»РѕРј " << endl
+		<< " 6 - Р•СЃР»Рё СЃС‚СЂРѕРєР° СЏРІР»СЏРµС‚СЃСЏ С‡РёСЃР»РѕРј, С‚Рѕ РІС‹РІРµСЃС‚Рё Р·РЅР°С‡РµРЅРёРµ СЌС‚РѕРіРѕ С‡РёСЃР»Р° " << endl
+	    << " 7 - РћРїСЂРµРґРµР»РёС‚СЊ, СЏРІР»СЏРµС‚СЃСЏ Р»Рё СЃС‚СЂРѕРєР° РїР°Р»РµРґСЂРѕРјРѕРј " << endl
+	    << " 8 - РџРµСЂРµРІРµСЃС‚Рё РґРІРѕРёС‡РЅРѕРµ С‡РёСЃР»Рѕ РІ РґРµСЃСЏС‚РёС‡РЅРѕРµ  " << endl
+	    << " 9 - РџРµСЂРµРІРµСЃС‚Рё С€РµСЃС‚РЅР°РґС‡Р°С‚РёСЂРёС‡РЅРѕРµ С‡РёСЃР»Рѕ РІ РґРµСЃСЏС‚РёС‡РЅРѕРµ " << endl
+	    << " 10 - Р’С‹СЏСЃРЅРёС‚СЊ СЏРІР»СЏРµС‚СЃСЏ Р»Рё СЃС‚СЂРѕРєР° MAC-Р°РґСЂРµСЃСЃРѕРј " << endl
+	    << " 11 - Р’С‹СЏСЃРЅРёС‚СЊ СЏРІР»СЏРµС‚СЃСЏ Р»Рё СЃС‚СЂРѕРєР° ip-Р°РґСЂРµСЃСЃРѕРј " << endl;
 	int answer = 0; cin >> answer;
 	if (answer == 1)
 	{
@@ -83,17 +83,17 @@ void main()
 	{
 		bool int_number = false;
 		int_number=is_int_number(str);
-		if(int_number==0) cout << "Не является " << endl;
-		if (int_number == 1) cout << "Является " << endl;
+		if(int_number==0) cout << "РќРµ СЏРІР»СЏРµС‚СЃСЏ " << endl;
+		if (int_number == 1) cout << "РЇРІР»СЏРµС‚СЃСЏ " << endl;
 	}
 	 else if (answer == 6) cout << to_int_number(str) << endl;
 
-	 else if (answer ==7) cout << "Строка "<< (is_palindrome(str) ? "" : "НЕ ") << "является палиндромом!"<< endl;
+	 else if (answer ==7) cout << "РЎС‚СЂРѕРєР° "<< (is_palindrome(str) ? "" : "РќР• ") << "СЏРІР»СЏРµС‚СЃСЏ РїР°Р»РёРЅРґСЂРѕРјРѕРј!"<< endl;
 	 
 	 else if (answer ==8) cout << bin_to_dec(str) << endl;
 	 else if (answer == 9) cout << hex_to_dec(str) << endl;
-	 else if (answer == 10) cout << "Строка " << (is_mac_address(str) ? "" : "НЕ ") << "является MAC-адрессом" << endl;
-	 else if (answer == 11) cout << "Строка " << (is_ip_address(str) ? "" : "НЕ ") << "является ip-адрессом" << endl;
+	 else if (answer == 10) cout << "РЎС‚СЂРѕРєР° " << (is_mac_address(str) ? "" : "РќР• ") << "СЏРІР»СЏРµС‚СЃСЏ MAC-Р°РґСЂРµСЃСЃРѕРј" << endl;
+	 else if (answer == 11) cout << "РЎС‚СЂРѕРєР° " << (is_ip_address(str) ? "" : "РќР• ") << "СЏРІР»СЏРµС‚СЃСЏ ip-Р°РґСЂРµСЃСЃРѕРј" << endl;
 
 	else  cout << "error"; 
 	
@@ -173,7 +173,7 @@ bool is_int_number(char str[])
 int  to_int_number(char str[])
 {
 	if (!is_int_number(str)) return 0;
-	int number = 0; // значение числа 
+	int number = 0; // Р·РЅР°С‡РµРЅРёРµ С‡РёСЃР»Р° 
 	number = atoi(str);
 	return number;
 }
@@ -196,7 +196,7 @@ bool is_palindrome(char str[])
 {
 	int n = strlen(str);
 	char* buffer = new char[n+1]{};
-	strcpy_s(buffer,n+1, str);//копирует строку str в строку buffer
+	strcpy_s(buffer,n+1, str);//РєРѕРїРёСЂСѓРµС‚ СЃС‚СЂРѕРєСѓ str РІ СЃС‚СЂРѕРєСѓ buffer
 	to_lower(buffer);
 	remove_symbol(buffer,' ');
 	n = strlen(buffer);
@@ -226,7 +226,7 @@ int  bin_to_dec(char str[])
 {
 	if (!is_bin_number(str))return 0;
 	int decimal = 0;
-	int weight = 1;	//Весовой коэффициент разряда
+	int weight = 1;	//Р’РµСЃРѕРІРѕР№ РєРѕСЌС„С„РёС†РёРµРЅС‚ СЂР°Р·СЂСЏРґР°
 	remove_symbol(str, ' ');
 	int n = strlen(str);
 	for (int i = n - 1; i >= 0; i--)
@@ -255,7 +255,7 @@ int  hex_to_dec(char str[])
 {
 	if (!is_hex_number(str))return 0;
 	int decimal = 0;
-	int weight = 1;	//Весовой коэффициент разряда
+	int weight = 1;	//Р’РµСЃРѕРІРѕР№ РєРѕСЌС„С„РёС†РёРµРЅС‚ СЂР°Р·СЂСЏРґР°
 	remove_symbol(str, ' ');
 	int n = strlen(str);
 	for (int i = n - 1; i >= 0; i--)
