@@ -1,5 +1,7 @@
 #include<iostream>
 #include<Windows.h>
+#include<ctype.h>
+#include<stdlib.h>
 
 using namespace std;
 
@@ -52,7 +54,7 @@ void main()
 		<< " 6 - Если строка является числом, то вывести значение этого числа " << endl
 	    << " 7 - Определить, является ли строка паледромом " << endl
 	    << " 8 - Перевести двоичное число в десятичное  " << endl
-	    << " 9 - Перевести шестнадчатиричное число в двоичное " << endl
+	    << " 9 - Перевести шестнадчатиричное число в десятичное " << endl
 	    << " 10 - Выяснить является ли строка MAC-адрессом " << endl
 	    << " 11 - Выяснить является ли строка ip-адрессом " << endl;
 	int answer = 0; cin >> answer;
@@ -115,7 +117,7 @@ void to_upper(char str[])
 	int i = 0;
 		for (; str[i]; i++)
 	{
-		if (str[i]!=char(32))str[i]=int(str[i]) - 32;
+			if (str[i] != isblank(str[i])) str[i] = toupper(str[i]);
 		 
 	}
 	
@@ -125,7 +127,7 @@ void to_lower(char str[])
 	int i = 0;
 	for (; str[i]; i++)
 	{
-		if (str[i] != char(32)) str[i] = int(str[i]) + 32;
+		if (str[i] != isblank(str[i])) str[i] = tolower(str[i]) ;
 
 	}
 
@@ -133,12 +135,12 @@ void to_lower(char str[])
 void capitalize(char str[])
 {
 	int i = 0;
-	str[i] = int(str[i]) - 32;
+	str[i] = toupper(str[i]);
 	for (;str[i];i++)
 	{
-		for (; str[i-1] == ' '; i++)
+		for (;isblank(str[i-1]); i++)
 		{
-			str[i] = int(str[i]) - 32;
+			str[i] = toupper(str[i]);
 		}
 		
 	}
@@ -147,7 +149,7 @@ void shrink(char str[])
 {
 	for (int i = 0; str[i]; i++)
 	{
-		while (str[i] == ' ' && str[i + 1] == ' ')
+		while (isspace(str[i]) && isspace(str[i + 1]))
 		{
 			for (int j = i; str[j]; j++)
 			{
@@ -162,8 +164,8 @@ bool is_int_number(char str[])
 	int i = 0;
 	for (; str[i]; i++)
 	{
-		if (str[i] >= 48 && str[i] <= 57) int_number = true;
-		else int_number = false;
+		if (isdigit(str[i])) int_number = true;
+		else int_number=false;
 
 	}
 	return  int_number;
@@ -221,8 +223,8 @@ bool is_bin_number(char str[])
 {
 	for (int i = 0; str[i]; i++)
 	{
-		if (str[i] != '0' && str[i] != '1' && str[i] != ' ')return false;
-		if (str[i - 1] == ' ' && str[i] == ' ' && str[i + 1] == ' ')return false;
+		if (str[i] != '0' && str[i] != '1' &&  !isspace(str[i]))return false;
+		if (isspace(str[i - 1]) && isspace(str[i]) && isspace(str[i + 1])) return false;
 	}
 	return true;
 }
@@ -250,8 +252,8 @@ bool is_hex_number(char str[])
 {
 	for (int i = 0; str[i]; i++)
 	{
-		if (( (str[i] >= 48 && str[i] <= 56)||(str[i] >= 65 && str[i] <= 70) )|| ( str[i] == ' '))return true;
-		if (str[i - 1] == ' ' && str[i] == ' ' && str[i + 1] == ' ')return false;
+		if ((isdigit(str[i]))||( isalpha(str[i])&&isupper(str[i]))|| ( isspace(str[i])))return true;
+		if (isspace(str[i - 1]) && isspace(str[i]) && isspace(str[i + 1])) return false;
 	}
 	return false;
 }
@@ -267,8 +269,8 @@ int  hex_to_dec(char str[])
 	{
 		if (str[i] != ' ')
 		{
-			if (str[i] >= 48 && str[i] <= 56) decimal += (str[i] - 48) * weight;
-			if (str[i] >= 65 && str[i] <= 70) decimal += (str[i] - 55) * weight;
+			if (isdigit(str[i])) decimal += (str[i] - 48) * weight;
+			if (isalpha(str[i])) decimal += (str[i] - 55) * weight;
 			weight *= 16;
 		}
 	}
@@ -283,7 +285,7 @@ bool is_mac_address(char str[])
 	else
 	for (int i = 0; str[i]; i++)
 	{
-		if (i%3==0 && str[i]=='-' )return true;
+		if (i%3==0 && isspace(str[i]))return true;
 		
 	}
 	
@@ -295,7 +297,7 @@ bool is_ip_address(char str[])
 		for (int i = 0; str[i]; i++)
 		{
 			if (str[i] == '.' && str[i + 1] == '.') return false;
-			if (((str[i] <= 48) || (str[i] >= 56))&&(str[i] != '.')) return false;
+			if (!isdigit(str[i])&&(str[i] != '.')) return false;
 			if (str[i] == '.') dot_count++;
 
 		}
